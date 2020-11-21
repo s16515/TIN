@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System PetWet</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="leftpanel">
+
+        <h1 class="h11">System PetWet</h1>
+        <img src="../images/health-2.png" alt="Logo">
+        
+
+        <ul>
+            <li><a href="">Strona główna</a></li>
+            <li><a href="">Pracownicy</a></li>
+            <li><a href="" class="active">Specjalizacje</a></li>
+        </ul>
+
+    </nav>
+<div class="topbottompanel">
+    <header>
+        <h2>Specjalizacje weterynarza</h2>
+        <p>
+            Dodawanie nowej (lub usuwanie) specjalizacji do wykształcenia lekarza.
+        </p>
+    </header>
+   
+
+    <main class="content">
+      <div class="a2">
+        Detale dotyczące wybranego pracownika:
+
+     <table class="table-list2">
+           <tr>
+                <th>Imię</th>
+               <td>Jan</td>       
+            </tr>
+          
+            <tr>
+                <th>Nazwisko</th>
+                <td>Kowalski</td>
+            </tr>
+            <tr>
+                <th>Email: </th>
+                <td>jan.kowalski@acme.com</td>
+            </tr>
+            
+        </table>
+       
+
+        Szczegóły specjalizacji pracownika:
+
+        <table class="table-list3">
+            <thead>
+                <tr>
+                    <th>Nazwa specjalizacji</th>
+                    <th>Data uzyskania specjalizacji</th>
+                    <th>Cena za wizytę</th>
+                    <th>Usuń</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <tr>
+                    <td>Internista</td>
+                    <td>10/10/2002</td>
+                    <td>50</td>
+                    
+                    <td>
+                      <a href=""><img src="../images/x-mark.png" alt="Logo"></a>
+                    </td>
+                   
+                </tr>
+            
+                <tr>
+                    <td>Okulista</td>
+                    <td>01/01/2015</td>
+                    <td>75</td>
+                    <td>
+                      <a href=""><img src="../images/x-mark.png" alt="Logo"></a>
+                    </td>
+                   
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+            <div class="container">
+           
+                <form>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="sname">Nazwa Specjalizacji</label>
+                    
+                  </div>
+                  <div class="right_column">
+                    <select id="spec" name="spec">
+                      <option value="Internista">Internista</option>
+                      <option value="Okulista">Okulista</option>
+                      <option value="Nefrolog">Nefrolog</option>
+                      <option value="Stomatolog">Stomatolog</option>
+                      <option value="Kardiolog">Kardiolog</option>
+                      <option value="Chir">Chirurgia ogólna</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="getdate">Data uzyskania specjalizacji</label>
+                  </div>
+                  <div class="right_column">
+                    <input type="date" id="getdate" name="getdate">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="cost">Cena za wizytę</label>
+                  </div>
+                  <div class="right_column">
+                    <input type="number" id="cost" name="date">
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <input type="submit" value="Wyślij">
+                  <a href="" class="button-cancel">Anuluj</a>
+                </div>
+                
+                
+                </form>
+              </div>
+              
+    </main>
+
+    <footer>
+        Magdalena Jasek, s16515
+    </footer>
+</div>
+</body>
+</html>

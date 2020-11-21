@@ -1,0 +1,423 @@
+* {
+    box-sizing: border-box; 
+  }
+    html {
+    background-color: #ecf0f1;
+    font-family: sans-serif;
+    box-sizing: border-box; 
+    
+    }
+    body {
+    display: flex;
+    min-height: 100vh;
+    min-width: 360px;
+    flex-direction: row;
+    margin: 0;
+    
+  }
+  .leftpanel {
+    background: #3b3759;
+    flex: 1;
+    color: #f5e7f2;
+    font-family:Khula;
+  }
+  .topbottompanel {
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    min-height: 65vh;
+    
+  }
+  .content > article {
+    min-height: 30vh;
+   
+  }
+  .a2{
+    background-color: #ffffff;
+    margin: 3vh;
+    padding: 1vh;
+    min-height: 29vh;
+    font-family:Khula;
+    color: #5c0048;
+  }
+
+  header, footer {
+    background: #85415d;
+    font: italic small-caps bold 20px Georgia, Garamond, serif;
+    color: white;
+  }
+  header{
+    height: 170px;
+  }
+  footer{
+    height: 15vh;
+  }
+
+  header, footer, nav {
+    padding: 1em;
+  }
+
+  article{
+    padding-top: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+    text-align:justify;
+  }
+
+  /* guziki z edycji pracownika*/
+
+.list-actions-button-details,
+.list-actions-button-edit,
+.list-actions-button-delete {
+    display: inline-block;
+    width: 200px; 
+    padding: 0.25rem 0.5rem;
+}
+
+.list-actions-button-details,
+.list-actions-button-edit,
+.list-actions-button-delete {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.list-actions-button-details,
+.list-actions-button-edit {
+    margin-right: 1rem;
+}
+
+.list-actions-button-details {
+    background-color: #2980b9;    
+}
+.list-actions-button-details:hover {
+    background-color: #3498db;
+}
+
+.list-actions-button-edit {
+    background-color: #f39c12;
+}
+
+.list-actions-button-edit:hover {
+    background-color: #f1c40f;
+}
+
+.list-actions-button-delete {
+    background-color: #c0392b;
+}
+
+.list-actions-button-delete:hover {
+    background-color: #e74c3c;
+}
+
+.list-actions-button-details,
+.list-actions-button-edit,
+.list-actions-button-delete,
+.button-add {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.list-actions-button-details,
+.list-actions-button-edit,
+.list-actions-button-delete{
+  border: none;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+
+
+.list-actions-button-delete {
+  background-color: #c0392b;
+}
+
+.list-actions-button-delete:hover {
+  background-color: #e74c3c;
+}
+
+.list-actions li {
+  display: inline-block;
+}
+
+
+  nav ul li a.active {
+    background-color: #ebc7d4;
+    color: #85007a;
+    }
+
+    .h11{
+    font-family:Khula;
+    color: #f5e7f2;
+    }
+
+    nav ul {
+    padding: 0;
+    list-style-type: none;
+    }
+
+    nav ul li a {
+    display: inline-block;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    }
+
+    nav ul li a:hover {
+    background-color: #cf8da7;
+    color: #6d005e;
+    }
+
+    .table-list {
+      border-collapse: collapse;
+      color:#000000;
+      width: 100%;
+    }
+    .table-list2 {
+      text-align: left;
+      margin: 2vh;
+      border-collapse: collapse;
+      color:#000000;
+      width: 50%;
+    }
+    .table-list3 {
+      margin: 2vh;
+      border-collapse: collapse;
+      color:#000000;
+      width: 70%;
+    }
+
+    .table-list2,
+    .table-list2 th,
+    .table-list2 td {
+      border: 1px solid #ffffff;
+    }
+
+  .table-list3,
+  .table-list3 th,
+  .table-list3 td {
+    border: 1px solid #410b1f;
+    
+  }
+
+  .table-list,
+  .table-list th,
+  .table-list td {
+      border: 1px solid #ffffff;
+  }
+  
+  .table-list3 th,
+  .table-list3 td,
+  .table-list2 th,
+  .table-list2 td,
+  .table-list th,
+  .table-list td {
+      padding: 0.5rem;
+  }
+  
+  .table-list3 th,
+  .table-list2 th,
+  .table-list th{
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .table-list2 tbody tr:nth-child(even),
+  .table-list tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+
+  .sel,
+  .table-list tbody tr:hover {
+    background-color: #ddd;
+  }
+
+  
+  
+  button, 
+  input, 
+  select, 
+  textarea { 
+      font-family: inherit; 
+      font-size: 100%; 
+      padding: 0; margin: 0; 
+  } 
+
+  .button-cancel,
+  .button-add {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.button-cancel,
+.button-add {
+    padding: 0.5rem 1rem;
+}
+.button-add {
+    background-color: #27ae60;
+}
+
+.button-add:hover {
+    background-color: #2ecc71;
+}
+
+.button-cancel {
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.button-cancel:hover {
+  background-color: #c0392b;
+}
+  
+/* ------------- formularz*/
+
+
+textarea { 
+    overflow: auto; 
+}
+
+.form {
+    margin-left: 2rem;
+    width: 300px;
+}
+
+input[type=text], 
+input[type=number], 
+input[type=email], 
+input[type=date],
+select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+ 
+}
+
+.button-cancel{
+  background-color:  #ca4839; 
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  float: left;
+  width: 100%;
+ 
+  margin-bottom: 2rem;
+
+}
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  padding: 20px;
+  align-items: center;
+}
+
+.left_column {
+  float: left;
+  width: 25%;
+  margin-top: 26px;
+}
+
+.right_column {
+  float: left;
+  width: 75%;
+  margin-top: 26px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* dopasowywuje formularz doszerokości okna*/
+
+
+@media all and (max-width: 720px) {
+
+ header{
+
+ font: italic small-caps bold 15px Georgia, Garamond, serif;
+ }
+
+nav ul {
+  flex-wrap: wrap;
+}
+nav ul li {
+  flex-basis: 50%;
+ 
+}
+nav ul li a {
+  display: block;
+}
+.form {
+  grid-template-columns: 1fr;
+  row-gap:unset;
+  margin-left: unset;
+}
+
+.left_column, 
+  .right_column, 
+.form input[type="text"],
+.form input[type="number"],
+.form input[type="date"],
+.form select {
+  width: 100%;
+  margin-top: 0;
+}
+}
+
+@media all and (max-width: 400px) {
+  body, 
+  nav, 
+  nav ul, 
+  header, 
+  main, 
+  footer {
+      margin: 0;
+  }
+  nav ul li {
+    flex-basis: 100%;
+  }
+}
