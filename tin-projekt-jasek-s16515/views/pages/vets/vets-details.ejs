@@ -1,0 +1,141 @@
+<%- include('../../fragments/header.ejs') %>
+
+<div class="topbottompanel">
+    <header>
+        <h2>Pracownicy</h2>
+        <p>
+            Szczegóły dotyczące wybranego pracownika kliniki. 
+        </p>
+    </header>
+   
+
+    <main class="content">
+      
+ <!----        
+      <article>  
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        
+                       
+                    </tr>
+                </thead>
+    
+    
+                <tbody>
+                    <tr class="sel">
+                        <td>Jan</td>
+                        <td>Kowalski</td>
+                        <td>jan.kowalski@acme.com</td>
+                       
+                       
+                    </tr>
+                    
+                    <tr>
+                        <td>Anna</td>
+                        <td>Belka</td>
+                        <td>anna.belka@agmail.com</td>
+                        
+                        
+                    </tr>
+                    <tr>
+                        <td>Kalina</td>
+                        <td>kotek</td>
+                        <td>kotekkotek2@agmail.com</td>
+                       
+                       
+                    </tr>
+                    <tr>
+                        <td>Magdalena</td>
+                        <td>Tkak</td>
+                        <td>m.tkak@agmail.com</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Adam</td>
+                        <td>Kotlin</td>
+                        <td>adam.kotlik@agmail.com</td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+      
+
+        </article>  -->
+        <div class="a2">
+            Detale dotyczące wybranego pracownika:
+
+         <table class="table-list2">
+               <tr>
+                    <th>Imię</th>
+                   <td>Jan</td>       
+                </tr>
+              
+                <tr>
+                    <th>Nazwisko</th>
+                    <td>Kowalski</td>
+                </tr>
+                <tr>
+                    <th>Email: </th>
+                    <td>jan.kowalski@acme.com</td>
+                </tr>
+                
+            </table>
+           
+
+            Szczegóły specjalizacji pracownika:
+
+            <table class="table-list3">
+                <thead>
+                    <tr>
+                        <th>Nazwa specjalizacji</th>
+                        <th>Data uzyskania specjalizacji</th>
+                        <th>Cena za wizytę</th>
+                    </tr>
+                </thead>
+    
+    
+                <tbody>
+                    <tr>
+                        <td>Internista</td>
+                        <td>10/10/2002</td>
+                        <td>50</td>
+                       
+                    </tr>
+                
+                    <tr>
+                        <td>Okulista</td>
+                        <td>01/01/2015</td>
+                        <td>75</td>
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+          
+                
+                    <ul class= "list-actions">
+                        <li>
+                            <a href="specjalizacje_pracownicy_add.html" class="list-actions-button-detailsv2"> Dodaj/usuń specjalizację</a>
+                        </li>
+                        <li>
+                            <a href="pracownicy-edit.html" class="list-actions-button-editv2">Edytuj dane pracownika </a>
+                        </li>
+                        <li>
+                            <a href="" class="list-actions-button-deletev2">Usuń pracownika</a>
+                        </li>
+                        <li>
+                            <a href="pracownicy.html" class="list-actions-button-return">Wróc do listy pracowników</a>
+                        </li>
+                    </ul>
+        </div>
+          
+        
+  
+        
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>

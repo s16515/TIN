@@ -1,0 +1,136 @@
+<%- include('../../fragments/header.ejs') %>
+
+<div class="topbottompanel">
+    <header>
+        <h2>Specjalizacje weterynarza</h2>
+        <p>
+            Dodawanie nowej (lub usuwanie) specjalizacji do wykształcenia lekarza.
+        </p>
+    </header>
+   
+
+    <main class="content">
+      <div class="a2">
+        Detale dotyczące wybranego pracownika:
+
+     <table class="table-list2">
+           <tr>
+                <th>Imię</th>
+               <td>Jan</td>       
+            </tr>
+          
+            <tr>
+                <th>Nazwisko</th>
+                <td>Kowalski</td>
+            </tr>
+            <tr>
+                <th>Email: </th>
+                <td>jan.kowalski@acme.com</td>
+            </tr>
+            
+        </table>
+       
+
+        Szczegóły specjalizacji pracownika:
+
+        <table class="table-list3">
+            <thead>
+                <tr>
+                    <th>Nazwa specjalizacji</th>
+                    <th>Data uzyskania specjalizacji</th>
+                    <th>Cena za wizytę</th>
+                    <th>Usuń</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <tr>
+                    <td>Internista</td>
+                    <td>10/10/2002</td>
+                    <td>50</td>
+                    <td>
+                      <ul class ="list-actions">
+                        <li>
+                          <a href="" class="list-actions-button-delete">Usuń</a>
+                        </li>
+                      </ul>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>Okulista</td>
+                    <td>01/01/2015</td>
+                    <td>75</td>
+                    <td>
+                      <ul class ="list-actions">
+                        <li>
+                          <a href="" class="list-actions-button-delete">Usuń</a>
+                        </li>
+                      </ul>
+                    </td>
+                   
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+            <div class="container">
+           
+              <form novalidate onsubmit="return validateForm();">
+                  <div>
+                    
+                      <label for="sname">Dodawanie nowej specjalizacji do weterynarza</label>
+                      
+        
+                  </div>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="sname">Nazwa Specjalizacji</label>
+                    
+                  </div>
+                  <div class="right_column">
+                    <select id="spec" name="spec">
+                      <option value="Internista">Internista</option>
+                      <option value="Okulista">Okulista</option>
+                      <option value="Nefrolog">Nefrolog</option>
+                      <option value="Stomatolog">Stomatolog</option>
+                      <option value="Kardiolog">Kardiolog</option>
+                      <option value="Chir">Chirurgia ogólna</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="getdate">Data uzyskania specjalizacji:<abbr title="required" aria-label="required"> * </abbr></label>
+                  </div>
+                  <div class="right_column">
+                    <input type="date" id="getdate" name="getdate">
+                    <span id="errorGetDate" class="errors-text"></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="cost">Cena za wizytę<abbr title="required" aria-label="required"> * </abbr></label>
+                  </div>
+                  <div class="right_column">
+                    <input type="number" id="cost" name="date">
+                    <span id="errorCost" class="errors-text"></span>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <p id="errorsSummary" class="errors-text"></p>
+                  <input type="submit" value="Wyślij">
+                  <a href="vets/vets" class="button-cancel">Anuluj</a>
+                </div>
+                
+                
+                </form>
+              </div>
+              
+    </main>
+
+
+    <%- include('../../fragments/footer.ejs') %>

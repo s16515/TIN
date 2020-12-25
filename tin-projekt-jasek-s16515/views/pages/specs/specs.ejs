@@ -1,0 +1,135 @@
+<%- include('../../fragments/header.ejs') %>
+
+<div class="topbottompanel">
+    <header>
+        <h2>Specjalizacje</h2>
+        <p>
+            W klinice przyjmują weterynarze o różnorodnych specjalizacjach. <br/> Poniżej widnieje lista dostępnych specjalizacji.
+        </p>
+    </header>
+   
+
+    <main class="content">
+        <article>
+
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Nazwa specjalizacji</th>
+                        <th>Minimalna pensja brutto</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr>
+                        <td>Internista</td>
+                        <td>3000</td>  
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Ortopeda</td>
+                        <td>3500</td>     
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>                   
+                    </tr>
+                    <tr>
+                        <td>Okulista</td>
+                        <td>3500</td>  
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Chirurgia ogólna</td>
+                        <td>3500</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kardiolog</td>
+                        <td>4500</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Nefrolog</td>
+                        <td>5000</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="specs/specs-edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Stomatolog</td>
+                        <td>5000</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="specs-edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><a href="specs/add" class="button-add">Dodaj nową specjalizację do bazy</a></p>
+
+            <!--zeby edytowac trzeba kliknac wybrana pozycje-->
+        </article>
+  
+        
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

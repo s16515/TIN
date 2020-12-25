@@ -1,0 +1,131 @@
+<%- include('../../fragments/header.ejs') %>
+<div class="topbottompanel">
+    <header>
+        <h2>Pracownicy</h2>
+        <p>
+            Lista pracowników (weterynarzy) kliniki. 
+        </p>
+    </header>
+   
+
+    <main class="content">
+        <article>
+
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Akcje</th>
+                       
+                    </tr>
+                </thead>
+    
+    
+                <tbody>
+                    <tr>
+                        <td>Jan</td>
+                        <td>Kowalski</td>
+                        <td>jan.kowalski@acme.com</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="pracownicy_details.html" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="pracownicy-edit.html" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Anna</td>
+                        <td>Belka</td>
+                        <td>anna.belka@agmail.com</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="pracownicy_details.html" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="pracownicy-edit.html" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Kalina</td>
+                        <td>kotek</td>
+                        <td>kotekkotek2@agmail.com</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="pracownicy_details.html" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="pracownicy-edit.html" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Magdalena</td>
+                        <td>Tkak</td>
+                        <td>m.tkak@agmail.com</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="pracownicy_details.html" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="pracownicy-edit.html" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Adam</td>
+                        <td>Kotlin</td>
+                        <td>adam.kotlik@agmail.com</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="/vets/details/:empId/" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="pracownicy-edit.html" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+            <p><a href="/vets/add" class="button-add">Dodaj nowego pracownika</a></p>
+
+        </article>
+  
+        
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>

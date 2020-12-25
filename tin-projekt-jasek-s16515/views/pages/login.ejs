@@ -1,0 +1,48 @@
+<%- include('../fragments/header.ejs') %>
+
+<div class="topbottompanel">
+    <header>
+        <h2>Logowanie</h2>
+        <p>
+            Strona logowania do indywidualnego konta.
+        </p>
+    </header>
+   
+
+     <main class="content">
+      
+
+            <div class="container">
+                <form>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="fname">Login</label>
+                  </div>
+                  <div class="right_column">
+                    <input type="text" id="login" name="login" placeholder="Twój login">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="lname">Hasło</label>
+                  </div>
+                  <div class="right_column">
+                    <input type="password" id="haslo" name="haslo" placeholder="Twoje hasło">
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <input type="submit" value="Zaloguj">
+                  <a href="../index" class="button-cancel">Anuluj</a>
+                </div>
+                
+                
+                </form>
+              </div>
+
+    
+  
+        
+    </main>
+
+    <%- include('../fragments/footer.ejs') %>

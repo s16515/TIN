@@ -1,0 +1,50 @@
+<%- include('../../fragments/header.ejs') %>
+<div class="topbottompanel">
+    <header>
+        <h2>Specjalizacje</h2>
+        <p>
+            Edytowanie danych dotyczących specjalizacji internista.
+        </p>
+    </header>
+   
+
+    <main class="content">
+      
+
+      <div class="container">
+        <form novalidate onsubmit="return validateForm();">
+          <div class="row">
+            <div class="left_column">
+              <label for="specName">Nazwa Specjalizacji:<abbr title="required" aria-label="required"> * </abbr></label>
+            </div>
+            <div class="right_column">
+              
+              <input type="text" id="specName" name="specName" placeholder=Internista>
+              <span id="errorSpecName" class="errors-text"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="left_column">
+              <label for="minSal">Minimalna pensja brutto:<abbr title="required" aria-label="required"> * </abbr></label>
+            </div>
+            <div class="right_column">
+              <input type="number" id="minSal" name="minSalary" placeholder="3000">
+              <span id="errorMinSal" class="errors-text"></span>
+            </div>
+          </div>
+          <div class="row">
+            <p id="errorsSummary" class="errors-text"></p>
+            <input type="submit" value="Submit">
+            <a href="/specs" class="button-cancel">Anuluj</a>
+          </div>
+          
+          
+          </form>
+        </div>
+
+    
+  
+        
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>
