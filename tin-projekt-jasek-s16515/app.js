@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 const vetRoute = require('./routes/vetRoute');
 const specRoute = require('./routes/specRoute');
 const specVetRoute = require('./routes/specVetRoute');
+const vetApiRouter = require('./routes/api/VetApiRoute');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vets', vetRoute);
 app.use('/specs', specRoute);
+app.use('/api/vets', vetApiRouter);
 app.use('/vets/specs-vets-add', specVetRoute);  //nie wiem jak to ugryzc, zeby nie rzucilo bledem w przyszlosci, ze nie wie ktorego usera ma pokazywac, kiedy wywolamy ta strone.
 app.use('/', indexRouter);
 // catch 404 and forward to error handler
