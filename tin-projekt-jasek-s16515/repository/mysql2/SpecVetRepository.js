@@ -30,7 +30,7 @@ exports.getSpecVets = () => {
                 specVets.push(specVet);
             }
             console.log(specVets);
-            return specvets;
+            return specVets;
         })
         .catch(err => {
             console.log(err);
@@ -81,12 +81,12 @@ exports.createSpecVet = (data) => {
     console.log('createSpecVet');
     console.log(data);
     const sql = 'INSERT into SpecVet (vet_id, spec_id, price, dateFrom) VALUES (?, ?, ?, ?)';
-    return db.promise().execute(sql, [data.vetId, data.specId, data.price, data.dateFrom]);
+    return db.promise().execute(sql, [data.vet_id, data.spec_id, data.price, data.dateFrom]);
 };
 
 exports.updateSpecVet = (specVetId, data) => {
     const sql = `UPDATE SpecVet set vet_id = ?, spec_id = ?, price = ?, dateFrom = ? where _id = ?`;
-    return db.promise().execute(sql, [data.vetId, data.specId, data.price, data.dateFrom, specVetId]);
+    return db.promise().execute(sql, [data.vet_id, data.spec_id, data.price, data.dateFrom, specVetId]);
 }
 
 exports.deleteSpecVet = (specVetId) => {

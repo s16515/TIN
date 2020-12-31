@@ -14,7 +14,7 @@ exports.getVets = () => {
 
 exports.getVetById = (vetId) => {
     const query = `SELECT v._id as _id, v.firstName, v.lastName, v.email, sv._id as specvet_id,
-        sv.price, sv.dateFrom, s._id as spec_id, spec.name, spec.minSalary 
+        sv.price, sv.dateFrom, s._id as spec_id, s.name, s.minSalary 
     FROM Vet v
     left join SpecVet sv on sv.vet_id = v._id
     left join Spec s on s._id = sv.spec_id 
@@ -45,7 +45,7 @@ return db.promise().query(query, [vetId]) //zastepuje tym znak zapytania
                         minSalary: row.minSalary
                     }
                 };
-                emp.specvets.push(specvet);
+                vet.specvets.push(specvet);
             }
         }
         return vet;
@@ -68,7 +68,7 @@ exports.updateVet = (vetId, vetData) => {
     const firstName = vetData.firstName;
     const lastName = vetData.lastName;
     const email = vetData.email;
-    const sql = `UPDATE Employee set firstName = ?, lastName = ?, email = ? where _id = ?`;
+    const sql = `UPDATE Vet set firstName = ?, lastName = ?, email = ? where _id = ?`;
     return db.promise().execute(sql, [firstName, lastName, email, vetId]);
 };
 

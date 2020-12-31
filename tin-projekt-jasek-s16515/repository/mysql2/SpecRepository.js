@@ -14,7 +14,7 @@ exports.getSpecs = () => {
 
 exports.getSpecById = (specId) => {
     const query = `SELECT s._id as _id, s.name, s.minSalary, sv._id as specvet_id,
-        sv.price, sv.dateFrom, v._id as vet_id, v.firstName, v.lastName, v.email, 
+        sv.price, sv.dateFrom, v._id as vet_id, v.firstName, v.lastName, v.email 
     FROM Spec s
     left join SpecVet sv on sv.spec_id = s._id
     left join Vet v on v._id = sv.vet_id 
@@ -27,8 +27,8 @@ return db.promise().query(query, [specId]) //zastepuje tym znak zapytania
         }
         const spec = {
             _id: parseInt(specId),
-            name: row.name,
-            minSalary: row.minSalary,
+            name: firstRow.name,
+            minSalary: firstRow.minSalary,
             specvets: []
         }
         for( let i=0; i<results[0].length; i++ ) {
@@ -40,12 +40,12 @@ return db.promise().query(query, [specId]) //zastepuje tym znak zapytania
                     dateFrom: row.dateFrom,
                     vet: {
                         _id: row.vet_id,
-                        firstName: firstRow.firstName,
-                        lastName: firstRow.lastName,
-                        email: firstRow.email,
+                        firstName: row.firstName,
+                        lastName: row.lastName,
+                        email: row.email,
                     }
                 };
-                emp.specvets.push(specvet);
+                spec.specvets.push(specvet);
             }
         }
         return spec;
@@ -66,7 +66,7 @@ exports.createSpec = (newSpecData) => {
 exports.updateSpec = (specID, specData) => {
     const name = specData.name;
     const minSalary = specData.minSalary;
-    const sql = `UPDATE Employee set name = ?, minSalary = ? where _id = ?`;
+    const sql = `UPDATE Spec set name = ?, minSalary = ? where _id = ?`;
     return db.promise().execute(sql, [name, minSalary, specID]);
 };
 
