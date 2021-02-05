@@ -1,0 +1,76 @@
+<%- include('../../fragments/header.ejs') %>
+<div class="topbottompanel">
+    <header>
+        <h2><%= pageTitle %></h2>
+        <p>
+          <%= pageTitlev2 %>
+        </p>
+    </header>
+   
+
+    <main class="content">
+      <script type="application/javascript" src="/js/validationSpecForm.js"></script>
+
+      <div class="container">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+         <input type="hidden" name="_id" value="<%= spec._id %>">
+          <div class="row">
+            <div class="left_column">
+              <label for="name">Nazwa Specjalizacji:<abbr title="required" aria-label="required"> * </abbr></label>
+            </div>
+            <div class="right_column">
+
+              <input type="text" name="name" id="name" placeholder="2-60 znaków" value="<%= spec.name %>"
+              <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+              <span id="errorName" class="errors-text"></span>
+           
+            </div>
+          </div>
+          <div class="row">
+            <div class="left_column">
+              <label for="minSalary">Minimalna pensja brutto:<abbr title="required" aria-label="required"> * </abbr></label>
+            </div>
+            <div class="right_column">
+
+              <input type="number" name="minSalary" id="minSalary" placeholder="od 4 do 7 cyfr" value="<%= spec.minSalary %>"
+              <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+              <span id="errorMinSalary" class="errors-text"></span>
+           
+            </div>
+          </div>
+          <div class="row">
+            <p id="errorsSummary" class="errors-text"></p>
+
+            <% if (formMode != 'showDetails') { %>
+                  <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                  <a class="button-cancel" href="/specs">Anuluj</a>
+              <% } %>
+
+              
+          </div>
+        </form>
+      
+        <ul class= "list-actionsv2">
+        <% if (formMode == 'showDetails') { %>
+             
+          <li>
+            <a href="/specs/edit/<%=spec._id%>" class="list-actions-button-editv2">Edytuj dane specjalizacji </a>  
+          </li>
+          <li>
+              <a href="/specs/delete/<%=spec._id%>" class="list-actions-button-deletev2">Usuń specjalizację</a>
+          </li>
+         
+          <li>
+              <a href="/specs" class="list-actions-button-return">Wróc do listy specjalizacji</a>
+          </li>
+          <% } %>
+        </ul>
+   
+  
+      </div>
+  
+  
+        
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>

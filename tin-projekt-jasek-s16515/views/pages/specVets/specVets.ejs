@@ -1,0 +1,56 @@
+<%- include('../../fragments/header.ejs') %>
+
+<div class="topbottompanel">
+    <header>
+        <h2><%= pageTitle %></h2>
+        <p>
+          <%= pageTitlev2 %>
+        </p>
+    </header>
+   
+    <main class="content">
+        <article>
+
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Nazwa Specjalizacji</th>
+                        <th>Imię weterynarza</th>
+                        <th>Nazwisko weterynarza</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+    
+    
+                <tbody>
+                    <% for (let specVet of specVets) { %>
+                     
+                    <tr>
+                        <td><%= specVet.spec.name %></td>
+
+                        <td><%= specVet.vet.firstName %></td>
+                        <td><%= specVet.vet.lastName %></td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="/specVets/details/<%=specVet._id%>" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/specVets/edit/<%=specVet._id%>" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="/specVets/delete/<%=specVet._id%>" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <% }%>
+                </tbody>
+            </table>
+            <p><a href="/specVets/add" class="button-add">Dodaj nowe powiązanie weterynarza ze specjalizacją</a></p>
+
+        </article>
+  
+      </main>
+
+    <%- include('../../fragments/footer.ejs') %>

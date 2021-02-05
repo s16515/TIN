@@ -2,7 +2,7 @@
 <html lang="pl-PL">
     
 <head>
-    <script type="application/javascript" src="js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System PetWet</title>
@@ -12,13 +12,14 @@
     <nav class="leftpanel">
 
         <h1 class="h11">System PetWet</h1>
-        <img src="../images/health-2.png" alt="Logo">
+        <img src="../../../../images/health-2.png" alt="Logo">
         
 
         <ul>
             <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
-            <li><a href="/vets" class="<%= navLocation == 'vets' ? 'active' : ''%>">Pracownicy</a></li>
+            <li><a href="/vets" class="<%= navLocation == 'vets' ? 'active' : ''%>">Weterynarze</a></li>
             <li><a href="/specs" class="<%= navLocation == 'specs' ? 'active' : ''%>">Specjalizacje</a></li>
+            <li><a href="/specVets" class="<%= navLocation == 'specVets' ? 'active' : ''%>">Specjaliści</a></li>
             <li><a href="/login" class="<%= navLocation == 'login' ? 'active' : ''%>">Logowanie</a></li>
         </ul>
     </nav>

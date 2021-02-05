@@ -27,7 +27,7 @@ function validateForm() {
     if (!checkRequired(lastNameInput.value)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole ‚jest wymagane";
+        errorLastName.innerText = "Pole jest wymagane";
     } else if (!checkTextLengthRange(lastNameInput.value, 2, 60)) {
         valid = false;
         lastNameInput.classList.add("error-input");

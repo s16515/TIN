@@ -1,0 +1,109 @@
+<%- include('../../fragments/header.ejs') %>
+<div class="topbottompanel">
+    <header>
+        <h2><%= pageTitle %></h2>
+        <p>
+          <%= pageTitlev2 %>
+        </p>
+     </header>
+   
+
+    <main class="content">
+
+      <script type="application/javascript" src="/js/validationSpecVetForm.js"></script>
+      
+            <div class="container">
+           
+              <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+                <input type="hidden" name="_id" value="<%= specVet._id %>">
+                  <div class="row">
+                    <div class="left_column">
+                      <label for="vet">Weterynarz</label>
+                    </div>
+                    <div class="right_column">
+                      <% if (formMode == 'createNew') { %>
+                      <select id="vet" name="vetId" required <%= (formMode == 'showDetails') ? 'disabled' : ''%> >
+                        <option value="" selected>--- Wybierz weterynarza ---</option>
+                        <% for (let i=0; i<allVets.length; i++) { let vet = allVets[i]; %>
+                            <option value="<%= vet._id %>" label="<%= vet.firstName + ' ' + vet.lastName %>"></option>
+                        <% } %>
+                      </select>
+                      <span id="errorVet" class="errors-text"></span>
+                      <% }else { %>
+                        <option value="<%= specVet.vet._id.toString() %>" label="<%= specVet.vet.firstName + ' ' + specVet.vet.lastName %>"
+                          <%= (specVet._id && specVet.vet._id.toString() == specVet.vet._id.toString()) ? 'selected' : ''%>></option>
+                        <% } %>
+                        
+                    </div>
+                  </div>
+                  
+                <div class="row">
+                  <div class="left_column"> 
+                    <label for="spec">Specjalizacja</label>
+                  </div>
+                  <div class="right_column">
+                    <% if (formMode == 'createNew') { %>
+                    <select id="spec" name="specId" required <%= (formMode == 'showDetails') ? 'disabled' : ''%> >
+                      <option value="" selected>--- Wybierz specjalizację ---</option>
+                      <% for (let i=0; i<allSpecs.length; i++) { let spec = allSpecs[i]; %>
+                          <option value="<%= spec._id %>" label="<%= spec.name %>"></option>
+                      <% } %>
+                    </select>
+                    <span id="errorSpec" class="errors-text">< /span>
+                    <% }else { %>
+                      <option value="<%= specVet.spec._id.toString() %>" label="<%= specVet.spec.name %>"
+                        <%= (specVet._id && specVet.spec._id.toString() == specVet.spec._id.toString()) ? 'selected' : ''%>></option>
+                      <% } %>
+                      
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="left_column">
+                    <label for="dateFrom">Data uzyskania specjalizacji:<abbr title="required" aria-label="required"> * </abbr></label>
+                  </div>
+                  <div class="right_column">
+                    <% if (formMode != 'createNew') { %>
+                    <input type="date" id="dateFrom" name="dateFrom" value="<%= specVet.dateFrom.toISOString().split('T')[0] %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                    <% }else{ %>
+                      <input type="date" id="dateFrom" name="dateFrom" 
+                      <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                      <% } %>
+                    <span id="errorDateFrom" class="errors-text"></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left_column">
+                    <label for="price">Cena za wizytę<abbr title="required" aria-label="required"> * </abbr></label>
+                  </div>
+                  <div class="right_column">
+                    <input type="number" id="price" name="price" value="<%= specVet.price %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+
+                    <span id="errorPrice" class="errors-text"></span>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <p id="errorsSummary" class="errors-text"></p>
+                  <% if (formMode != 'showDetails') { %>
+                  <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                  <% } %>
+                  <% if (formMode == 'showDetails') { %>
+                  <a href="/specVets/edit/<%=specVet._id%>" class="button-edit">Edytuj</a>
+                  
+                  <a href="/specVets" class="button-cancel">Wróć do listy specjalistów</a>
+                  <% } else{%>
+                    <a href="/specVets" class="button-cancel">Anuluj</a>
+                    <% } %>
+                </div>
+                
+                
+                </form>
+              </div>
+              
+    </main>
+
+
+    <%- include('../../fragments/footer.ejs') %>

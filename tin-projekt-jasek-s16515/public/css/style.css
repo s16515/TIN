@@ -70,7 +70,8 @@
 
   /* guziki z edycji pracownika*/
 
-  .list-actions {
+  .list-actions,
+  .list-actionsv2 {
     margin: 0;
     text-align: center;
     list-style-type: none;
@@ -80,6 +81,10 @@
 .list-actions li {
   display: inline-block;
 }
+.list-actionsv2 li {
+  margin-top: 2em;
+  display: inline-block;
+}
 
 .list-actions-button-details,
 .list-actions-button-edit,
@@ -87,14 +92,16 @@
 .list-actions-button-detailsv2,
 .list-actions-button-editv2,
 .list-actions-button-deletev2,
-.list-actions-button-return {
+.list-actions-button-return,
+.list-actions-button-add{
     display: inline-block;
     padding: 0.25rem 0.5rem;
 }
 
 .list-actions-button-details,
 .list-actions-button-edit,
-.list-actions-button-delete {
+.list-actions-button-delete,
+.list-actions-button-add {
     display: inline-block;
     width: 75px; 
     padding: 0.25rem 0.5rem;
@@ -102,10 +109,12 @@
 .list-actions-button-detailsv2,
 .list-actions-button-editv2,
 .list-actions-button-deletev2,
-.list-actions-button-return {
+.list-actions-button-return,
+.list-actions-button-add {
     display: inline-block;
-    width: 200px; 
+    width: 300px; 
     padding: 0.25rem 0.5rem;
+    
 }
 
 .list-actions-button-details,
@@ -114,15 +123,18 @@
 .list-actions-button-detailsv2,
 .list-actions-button-editv2,
 .list-actions-button-deletev2,
-.list-actions-button-return {
+.list-actions-button-return,
+.list-actions-button-add {
   display: inline-block;
     border: none;
     border-radius: 5px;
     color: white;
     text-decoration: none;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 10rem;
+    margin-right: 1rem;
 }
+/*
 .list-actions-button-details,
 .list-actions-button-edit,
 .list-actions-button-detailsv2,
@@ -132,21 +144,25 @@
 .list-actions-button-return  {
     margin-right: 1rem;
 }
-
+*/
 .list-actions-button-details,
-.list-actions-button-detailsv2 {
+.list-actions-button-detailsv2,
+.list-actions-button-return{
     background-color: #2980b9;    
 }
 .list-actions-button-details:hover,
-.list-actions-button-detailsv2:hover {
+.list-actions-button-detailsv2:hover,
+.list-actions-button-return:hover {
     background-color: #3498db;
 }
 
+.button-edit,
 .list-actions-button-edit,
 .list-actions-button-editv2 {
     background-color: #f39c12;
 }
 
+.button-edit:hover,
 .list-actions-button-edit:hover,
 .list-actions-button-editv2:hover {
     background-color: #f1c40f;
@@ -169,7 +185,8 @@
 .list-actions-button-editv2,
 .list-actions-button-deletev2,
 .list-actions-button-return ,
-.button-add {
+.button-add,
+.list-actions-button-add {
     border: none;
     border-radius: 5px;
     color: white;
@@ -177,6 +194,8 @@
     text-align: center;
     font-size: 0.8rem;
 }
+
+/*
 
 .list-actions-button-details,
 .list-actions-button-edit,
@@ -194,7 +213,7 @@
   font-size: 0.8rem;
 }
 
-
+*/
 
 .list-actions-button-delete,
 .list-actions-button-deletev2 {
@@ -315,6 +334,7 @@
   } 
 
   .button-cancel,
+  .button-edit,
   .button-add {
     border: none;
     border-radius: 5px;
@@ -324,19 +344,21 @@
 }
 
 .button-cancel,
+.button-edit,
 .button-add {
     padding: 0.5rem 1rem;
 }
 .button-add,
-.list-actions-button-return {
+.list-actions-button-add{
     background-color: #27ae60;
 }
 
 .button-add:hover,
-.list-actions-button-return:hover {
+.list-actions-button-add:hover{
     background-color: #2ecc71;
 }
 
+.button-edit,
 .button-cancel {
   padding: 0.5rem 1rem;
   width: 100%;
@@ -351,11 +373,6 @@
 
 textarea { 
     overflow: auto; 
-}
-
-.form {
-    margin-left: 2rem;
-    width: 300px;
 }
 
 input[type=text], 
@@ -376,6 +393,18 @@ label {
  
 }
 
+.button-edit{
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  float: left;
+  width: 100%;
+ 
+  margin-bottom: 1rem;
+
+}
 .button-cancel{
   background-color:  #ca4839; 
   color: white;
@@ -419,7 +448,7 @@ input[type=submit]:hover {
 }
 
 .right_column {
-  float: left;
+  float: right;
   width: 75%;
   margin-top: 26px;
 }

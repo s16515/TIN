@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const session = require('express-session');
+
+
 var indexRouter = require('./routes/index');
 const vetRoute = require('./routes/vetRoute');
 const specRoute = require('./routes/specRoute');
@@ -13,6 +16,10 @@ const specApiRouter = require('./routes/api/SpecApiRoute');
 const specVetApiRouter = require('./routes/api/SpecVetApiRoute');
 
 var app = express();
+app.use(session({
+  secret: 'my_secret_password',
+  resave: false
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,10 +32,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vets', vetRoute);
 app.use('/specs', specRoute);
+app.use('/specVets', specVetRoute);  
+
 app.use('/api/vets', vetApiRouter);
 app.use('/api/specs', specApiRouter);
 app.use('/api/specVets', specVetApiRouter);
-app.use('/vets/specs-vets-add', specVetRoute);  //nie wiem jak to ugryzc, zeby nie rzucilo bledem w przyszlosci, ze nie wie ktorego usera ma pokazywac, kiedy wywolamy ta strone.
+
 app.use('/', indexRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

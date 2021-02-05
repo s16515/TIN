@@ -1,0 +1,164 @@
+<%- include('../../fragments/header.ejs') %>
+<div class="topbottompanel">
+    <header>
+        <h2><%= pageTitle %></h2>
+        <p>
+          <%= pageTitlev2 %>
+        </p>
+    </header>
+   
+
+    <main class="content">
+     <!---- <script type="application/javascript" src="/js/validationVetForm.js"></script> -->
+      <script type="application/javascript" src="../model/joi/Vet.js"></script>
+      
+       
+        <div class="container">
+       <!---   <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">  -->
+          <form class="form" method="post" action="<%=formAction%>" novalidate >
+            <input type="hidden" name="_id" value="<%= vet._id %>">
+            <div class="row">
+            <div class="left_column">
+              <label for="firstname">Imię:<abbr title="required" aria-label="required"> * </abbr></label>
+            </div>
+            <div class="right_column">
+              <input  type="text" name="firstName" id="firstName" placeholder="2-60 znaków" value="<%= vet.firstName %>"
+              <%= (formMode == 'showDetails' || formMode == 'editSpecVetPage') ? 'disabled' : ''%>
+              class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '' %>"/>
+    
+              <span id="errorFirstName" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('firstName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+                <% } %>
+            </span>
+
+
+            <!----  <span id="errorFirstName" class="errors-text"></span> -->
+            </div>
+            </div>
+            <div class="row">
+            <div class="left_column">
+              <label for="lastname">Nazwisko:<abbr title="required" aria-label="required"> * </abbr></label>
+            </div>
+            <div class="right_column">
+              <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" value="<%= vet.lastName %>"
+              <%= (formMode == 'showDetails' || formMode == 'editSpecVetPage') ? 'disabled' : '' %>
+              class="<%= validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '' %>"/>
+             
+              <span id="errorLastName" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('lastName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('lastName')).message %>
+                <% } %>
+            </span>
+            <!----    <span id="errorLastName" class="errors-text"></span>-->
+            </div>
+            </div>
+            <div class="row">
+            <div class="left_column">
+              <label for="email">Adres email:<abbr title="required" aria-label="required"> * </abbr></label>
+            </div>
+            <div class="right_column">
+              <input type="email" name="email" id="email" placeholder="np. nazwa@domena.pl" value="<%= vet.email %>"
+              <%= (formMode == 'showDetails' || formMode == 'editSpecVetPage') ? 'disabled' : '' %>
+              class="<%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '' %>"/>
+
+              <span id="errorEmail" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('email'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('email')).message %>
+                <% } %>
+            </span>
+            <!----  <span id="errorEmail" class="errors-text"></span> -->
+            </div>
+            </div>
+            <div class="row">
+              <p id="errorsSummary" class="errors-text"></p>
+
+              <% if (formMode != 'showDetails' && formMode != 'editSpecVetPage') { %>
+            
+                  <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                  <a class="button-cancel" href="/vets">Anuluj</a>
+              <% } %>
+
+            </div>
+          </form>
+        </div>
+      
+        <% if (formMode != 'createNew') { %>
+          <div class="container">
+               Szczegóły specjalizacji
+          <table class="table-list3">
+            <thead>
+              <tr>
+                  <th>Nazwa specjalizacji</th>
+                  <th>Data uzyskania specjalizacji</th>
+                  <th>Cena za wizytę</th>
+                  <%if (formMode == 'editSpecVetPage'){%>
+                  <th>Akcje</th>
+                  <% } %>
+              </tr>
+          </thead>
+              
+              <tbody>
+              <% for (let v of vet.specVets) { %>
+                  <tr>
+                      <td><a href="/specs/details/<%= v.spec._id %>"><%= v.spec.name %></a></td>
+                      <td><%= v.dateFrom.toISOString().split('T')[0] %></td>
+                      <td><%= v.price %></td>
+                      <%if (formMode == 'editSpecVetPage'){%>
+
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="/specVets/edit/<%=v._id%>" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                      <% } %>
+                  </tr>
+              <% } %>
+              </tbody>
+          </table>
+      
+           
+            <ul class= "list-actionsv2">
+              <!---
+              <li>
+                  <a href="specjalizacje_pracownicy_add.html" class="list-actions-button-detailsv2"> Dodaj/usuń specjalizację</a>
+              </li>
+            -->
+
+            <% if (formMode != 'showDetails' && formMode != 'editSpecVetPage') { %>
+             
+              <li>
+                <a href="/vets//SpecVet/editPage/<%=vet._id%>" class="list-actions-button-editv2">Edytuj specjalizacje weterynarza </a>  
+              </li>
+
+              <% } else if (formMode == 'editSpecVetPage'){%>
+
+                <li>
+                  <a href="/vets/specVet/add/<%=vet._id%>" class="list-actions-button-add">Dodaj nową specjalizację weterynarza </a>  
+                </li> 
+
+              <% } else {%>
+
+              <li>
+                <a href="/vets/edit/<%=vet._id%>" class="list-actions-button-editv2">Edytuj dane weterynarza </a>  
+              </li>
+              <% } %>
+              <li>
+                  <a href="/vets/delete/<%=vet._id%>" class="list-actions-button-deletev2">Usuń weterynarza</a>
+              </li>
+              <li>
+                  <a href="/vets" class="list-actions-button-return">Wróc do listy weterynarzy</a>
+              </li>
+          </ul>
+      
+          </div>
+        <% } %>
+    </main>
+
+
+    <%- include('../../fragments/footer.ejs') %>

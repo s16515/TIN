@@ -1,7 +1,7 @@
 const db = require('../../config/mysql2/db');
 
 exports.getSpecVets = () => {
-    const query = `SELECT sv._id as specvet_id, sv.price, sv.dateFrom, s._id as spec_id, s.name,
+    const query = `SELECT sv._id as specVet_id, sv.price, sv.dateFrom, s._id as spec_id, s.name,
     s.minSalary, v._id as vet_id, v.firstName, v.lastName, v.email
         FROM SpecVet sv 
         left join Vet v on sv.vet_id = v._id
@@ -12,7 +12,7 @@ exports.getSpecVets = () => {
             for(let i=0; i<results[0].length; i++) {
                 const row = results[0][i];
                 const specVet = {
-                    _id: row.specvet_id,
+                    _id: row.specVet_id,
                     price: row.price,
                     dateFrom: row.dateFrom,
                     spec: {
@@ -39,7 +39,7 @@ exports.getSpecVets = () => {
 
 
 exports.getSpecVetById = (SpecVetId) => {
-    const query = `SELECT sv._id as specvet_id, sv.price, sv.dateFrom, s._id as spec_id, s.name,
+    const query = `SELECT sv._id as specVet_id, sv.price, sv.dateFrom, s._id as spec_id, s.name,
     s.minSalary, v._id as vet_id, v.firstName, v.lastName, v.email
         FROM SpecVet sv 
         left join Vet v on sv.vet_id = v._id
@@ -81,12 +81,23 @@ exports.createSpecVet = (data) => {
     console.log('createSpecVet');
     console.log(data);
     const sql = 'INSERT into SpecVet (vet_id, spec_id, price, dateFrom) VALUES (?, ?, ?, ?)';
-    return db.promise().execute(sql, [data.vet_id, data.spec_id, data.price, data.dateFrom]);
+    return db.promise().execute(sql, [data.vetId, data.specId, data.price, data.dateFrom]);
 };
 
+/*
+exports.createVet = (newVetData) => {
+    const firstName = newVetData.firstName;
+    const lastName = newVetData.lastName;
+    const email = newVetData.email;
+    const sql = 'INSERT into Vet (firstName, lastName, email) VALUES (?, ?, ?)'
+    return db.promise().execute(sql, [firstName, lastName, email]);
+};*/
+
 exports.updateSpecVet = (specVetId, data) => {
-    const sql = `UPDATE SpecVet set vet_id = ?, spec_id = ?, price = ?, dateFrom = ? where _id = ?`;
-    return db.promise().execute(sql, [data.vet_id, data.spec_id, data.price, data.dateFrom, specVetId]);
+    const price = data.price;
+    const dateFrom = data.dateFrom;
+    const sql = `UPDATE SpecVet set price = ?, dateFrom = ? where _id = ?`;
+    return db.promise().execute(sql, [price, dateFrom, specVetId]);
 }
 
 exports.deleteSpecVet = (specVetId) => {

@@ -1,4 +1,32 @@
 const db = require('../../config/mysql2/db');
+const vetSchema = require('../../model/joi/Vet');
+
+
+checkEmailUnique = (email, vetId) => { 
+    let sql, promise;
+    if(vetId) {
+        sql = `SELECT COUNT(1) as c FROM Vet where _id != ? and email = ?`;
+        promise = db.promise().query(sql, [vetId, email]);
+        console.log(vetId);
+    } else {
+        sql = `SELECT COUNT(1) as c FROM Vet where email = ?`;
+        promise = db.promise().query(sql, [email]);
+    }
+    return promise.then( (results, fields) => {
+        console.log(results);
+        const count = results[0][0].c;
+        let err = {};
+        if(count > 0) {
+            err = {
+                details: [{
+                    path: ['email'],
+                    message: 'Podany adres email jest już używany'
+                }]
+            };
+        }
+        return err;
+    });
+}
 
 exports.getVets = () => {
     return db.promise().query('SELECT * FROM Vet')
@@ -30,7 +58,7 @@ return db.promise().query(query, [vetId]) //zastepuje tym znak zapytania
             firstName: firstRow.firstName,
             lastName: firstRow.lastName,
             email: firstRow.email,
-            specvets: []
+            specVets: []
         }
         for( let i=0; i<results[0].length; i++ ) {
             const row = results[0][i];
@@ -45,7 +73,7 @@ return db.promise().query(query, [vetId]) //zastepuje tym znak zapytania
                         minSalary: row.minSalary
                     }
                 };
-                vet.specvets.push(specvet);
+                vet.specVets.push(specvet);
             }
         }
         return vet;
@@ -57,19 +85,50 @@ return db.promise().query(query, [vetId]) //zastepuje tym znak zapytania
 };
 
 exports.createVet = (newVetData) => {
-    const firstName = newVetData.firstName;
-    const lastName = newVetData.lastName;
-    const email = newVetData.email;
-    const sql = 'INSERT into Vet (firstName, lastName, email) VALUES (?, ?, ?)'
-    return db.promise().execute(sql, [firstName, lastName, email]);
-};
+    const vRes = vetSchema.validate(newVetData, { abortEarly: false} );
+    if(vRes.error) {
+        return Promise.reject(vRes.error);
+    }
+    return checkEmailUnique(newVetData.email)
+        .then(emailErr => {
+            if(emailErr) {
+                return Promise.reject(emailErr);
+            } else {
+                const firstName = newVetData.firstName;
+                const lastName = newVetData.lastName;
+                const email = newVetData.email;
+                const password = newVetData.password;
+                console.log('OK');
+                const sql = 'INSERT into Vet (firstName, lastName, email, password) VALUES (?, ?, ?, ?)'
+                return db.promise().execute(sql, [firstName, lastName, email, password]);
+            }
+        })
+        .catch(err => {
+            return Promise.reject(err);
+        });
+}; 
+
 
 exports.updateVet = (vetId, vetData) => {
-    const firstName = vetData.firstName;
-    const lastName = vetData.lastName;
-    const email = vetData.email;
-    const sql = `UPDATE Vet set firstName = ?, lastName = ?, email = ? where _id = ?`;
-    return db.promise().execute(sql, [firstName, lastName, email, vetId]);
+    const vRes = vetSchema.validate(vetData, { abortEarly: false} );
+    if(vRes.error) {
+        return Promise.reject(vRes.error);
+    }
+    return checkEmailUnique(vetData.email, vetId)
+        .then(emailErr => {
+            if(emailErr) {
+                return Promise.reject(emailErr);
+            } else {
+        const firstName = vetData.firstName;
+        const lastName = vetData.lastName;
+        const email = vetData.email;
+        const sql = `UPDATE Vet set firstName = ?, lastName = ?, email = ? where _id = ?`;
+        return db.promise().execute(sql, [firstName, lastName, email, vetId]);
+}
+})
+.catch(err => {
+    return Promise.reject(err);
+});
 };
 
 exports.deleteVet = (vetId) => {
@@ -80,4 +139,4 @@ return db.promise().execute(sql1, [vetId])
     .then(() => {
         return db.promise().execute(sql2, [vetId])
     });
-};
+};  

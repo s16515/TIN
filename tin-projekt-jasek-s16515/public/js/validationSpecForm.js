@@ -1,40 +1,39 @@
-
 //dodaj specjalizację - walidacja formularza
 function validateForm() {
 
-    const getSpecInput = document.getElementById('specName');
-    const minSalInput = document.getElementById('minSal');
+    const nameInput = document.getElementById('name');
+    const minSalaryInput = document.getElementById('minSalary');
 
-    const errorGetSpec = document.getElementById('errorSpecName');
-    const errorMinSal = document.getElementById('errorMinSal');
+    const errorName = document.getElementById('errorName');
+    const errorMinSalary = document.getElementById('errorMinSalary');
     const errorsSummary = document.getElementById('errorsSummary'); 
     
-    resetErrors([getSpecInput, minSalInput], [errorGetSpec, errorMinSal], errorsSummary);
+    resetErrors([nameInput, minSalaryInput], [errorName, errorMinSalary], errorsSummary);
     
     let valid = true;
 
-    if (!checkRequired(getSpecInput.value)) {
+    if (!checkRequired(nameInput.value)) {
         valid = false;
-        getSpecInput.classList.add("error-input");
-        errorGetSpec.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(getSpecInput.value, 2, 60)) {
+        nameInput.classList.add("error-input");
+        errorName.innerText = "Pole jest wymagane";
+    } else if (!checkTextLengthRange(nameInput.value, 2, 60)) {
         valid = false;
-        getSpecInput.classList.add("error-input");
-        errorGetSpec.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        nameInput.classList.add("error-input");
+        errorName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
     }
 
-    if (!checkRequired(minSalInput.value)) {
+    if (!checkRequired(minSalaryInput.value)) {
         valid = false;
-        minSalInput.classList.add("error-input");
-        errorMinSal.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(minSalInput.value, 2, 7)) {
+        minSalaryInput.classList.add("error-input");
+        errorMinSalary.innerText = "Pole jest wymagane";
+    } else if (!checkTextLengthRange(minSalaryInput.value, 4, 8)) {
         valid = false;
-        minSalInput.classList.add("error-input");
-        errorMinSal.innerText = "Pole powinno zawierać od 2 do 7 znaków";
-    } else if (!checkCost(minSalInput.value)) {
+        minSalaryInput.classList.add("error-input");
+        errorMinSalary.innerText = "Pole powinno zawierać od 4 do 8 znaków";
+    } else if (!checkNumber(minSalaryInput.value)) {
         valid = false;
-        minSalInput.classList.add("error-input");
-        errorMinSal.innerText = "Zły format danych";
+        minSalaryInput.classList.add("error-input");
+        errorMinSalary.innerText = "Zły format danych";
     }
 
     if (!valid) {

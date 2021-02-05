@@ -1,4 +1,5 @@
 const db = require('../../config/mysql2/db');
+const specSchema = require('../../model/joi/Spec');
 
 exports.getSpecs = () => {
     return db.promise().query('SELECT * FROM Spec')
@@ -57,6 +58,10 @@ return db.promise().query(query, [specId]) //zastepuje tym znak zapytania
 };
 
 exports.createSpec = (newSpecData) => {
+    const sRes = specSchema.validate(newSpecData, { abortEarly: false} );
+    if(sRes.error) {
+        return Promise.reject(sRes.error);
+    }
     const name = newSpecData.name;
     const minSalary = newSpecData.minSalary;
     const sql = 'INSERT into Spec (name, minSalary) VALUES (?, ?)'
@@ -64,6 +69,10 @@ exports.createSpec = (newSpecData) => {
 };
 
 exports.updateSpec = (specID, specData) => {
+    const sRes = specSchema.validate(newSpecData, { abortEarly: false} );
+    if(sRes.error) {
+        return Promise.reject(sRes.error);
+    }
     const name = specData.name;
     const minSalary = specData.minSalary;
     const sql = `UPDATE Spec set name = ?, minSalary = ? where _id = ?`;

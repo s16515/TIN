@@ -2,20 +2,25 @@
 //dodaj specjalizację do weta - walidacja formularza
 function validateForm() {
 
-    const getDateInput = document.getElementById('getdate');
-    const costInput = document.getElementById('cost');
+    const vetInput = document.getElementById('vet');
+    const specInput = document.getElementById('spec');
+    const dateFromInput = document.getElementById('dateFrom');
+    const priceInput = document.getElementById('price');
 
-    const errorGetDate = document.getElementById('errorGetDate');
-    const errorCost = document.getElementById('errorCost');
+    const errorVet = document.getElementById('errorVet');
+    const errorSpec = document.getElementById('errorSpec');
+    const errorDateFrom = document.getElementById('errorDateFrom');
+    const errorPrice = document.getElementById('errorPrice');
     const errorsSummary = document.getElementById('errorsSummary'); 
+    console.log('jestem tu');
     
-    resetErrors([getDateInput, costInput], [errorGetDate, errorCost], errorsSummary);
+    resetErrors([dateFromInput, priceInput], [errorDateFrom, errorPrice], errorsSummary);
     
     //buduję aktualną datę
     let valid = true;
     let nowDate = new Date(),
     month = '' + (nowDate.getMonth() + 1),
-    day = '' + nowDate.getDate(),
+    day = '' + nowDate.dateFrom(),
     year = nowDate.getFullYear();
     yearPlus = nowDate.getFullYear() +1;
     yearMinus = nowDate.getFullYear() -80;
@@ -29,40 +34,50 @@ function validateForm() {
 
     //zaczynam sprawdzanie warunków
 
-    if (!checkRequired(getDateInput.value)) {
+    if (!checkRequired(vetInput.value)) {
         valid = false;
-        getDateInput.classList.add("error-input");
-        errorGetDate.innerText = "Pole jest wymagane";
+        vetInput.classList.add("error-input");
+        errorVet.innerText = "Pole jest wymagane";
+    }
+    if (!checkRequired(specInput.value)) {
+        valid = false;
+        employeeInput.classList.add("error-input");
+        errorSpec.innerText = "Pole jest wymagane";
+    }
+    if (!checkRequired(dateFromInput.value)) {
+        valid = false;
+        dateFromInput.classList.add("error-input");
+        errorDateFrom.innerText = "Pole jest wymagane";
     } 
 
 
-    if (!checkRequired(getDateInput.value)) {
+    if (!checkRequired(dateFromInput.value)) {
         valid = false;
-        getDateInput.classList.add("error-input");
-        errorGetDate.innerText = "Pole jest wymagane";
-    } else if (checkDateIfAfter(getDateInput.value, nextYearString)) {
+        dateFromInput.classList.add("error-input");
+        errorDateFrom.innerText = "Pole jest wymagane";
+    } else if (checkDateIfAfter(dateFromInput.value, nextYearString)) {
         valid = false;
-        getDateInput.classList.add("error-input");
-        errorGetDate.innerText = "Data nie może być z więcej niż rok do przodu";
-    } else if (checkDateIfAfter(pastString, getDateInput.value)) {
+        dateFromInput.classList.add("error-input");
+        errorDateFrom.innerText = "Data nie może być z więcej niż rok do przodu";
+    } else if (checkDateIfAfter(pastString, dateFromInput.value)) {
         //jeśli data jest o 80+ lat do tylu to za duzo
         valid = false;
-        getDateInput.classList.add("error-input");
-        errorGetDate.innerText = "Data nie powinna być późniejsza niż 80 lat temu";
+        dateFromInput.classList.add("error-input");
+        errorDateFrom.innerText = "Data nie powinna być późniejsza niż 80 lat temu";
     }
 
-    if (!checkRequired(costInput.value)) {
+    if (!checkRequired(priceInput.value)) {
         valid = false;
-        costInput.classList.add("error-input");
-        errorCost.innerText = "Pole jest wymagane";
-    } else if (!checkNumber(costInput.value)) {
+        priceInput.classList.add("error-input");
+        errorPrice.innerText = "Pole jest wymagane";
+    } else if (!checkNumber(priceInput.value)) {
         valid = false;
-        costInput.classList.add("error-input");
-        errorCost.innerText = "Pole powinno być liczbą";
-    } else if (!checkNumberRange(costInput.value, 2000, 1_000_000)) {
+        priceInput.classList.add("error-input");
+        errorPrice.innerText = "Pole powinno być liczbą";
+    } else if (!checkNumberRange(priceInput.value, 20, 1000)) {
         valid = false;
-        costInput.classList.add("error-input");
-        errorCost.innerText = "Pole powinno być liczbą w zakresie od 2000 do 1000000";
+        priceInput.classList.add("error-input");
+        errorPrice.innerText = "Pole powinno być liczbą w zakresie od 20 do 1 000";
     }
 
     if (!valid) {
@@ -70,3 +85,4 @@ function validateForm() {
     }
     return valid;
 }
+ 

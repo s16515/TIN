@@ -21,113 +21,31 @@
                     </tr>
                 </thead>
     
+
                 <tbody>
+                    <% for (let spec of specs) { %>
                     <tr>
-                        <td>Internista</td>
-                        <td>3000</td>  
+                        <td><%= spec.name %></td>
+                        <td><%= spec.minSalary %></td>
                         <td>
                             <ul class ="list-actions">
                                 <li>
-                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
+                                    <a href="/specs/details/<%=spec._id%>" class="list-actions-button-details">Szczegóły</a>
                                 </li>
                                 <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                    <a href="/specs/edit/<%=spec._id%>" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="/specs/delete/<%=spec._id%>" class="list-actions-button-delete">Usuń</a>
                                 </li>
                             </ul>
                         </td>
                     </tr>
-                    
-                    <tr>
-                        <td>Ortopeda</td>
-                        <td>3500</td>     
-                        <td>
-                            <ul class ="list-actions">
-                                <li>
-                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-                            </ul>
-                        </td>                   
-                    </tr>
-                    <tr>
-                        <td>Okulista</td>
-                        <td>3500</td>  
-                        <td>
-                            <ul class ="list-actions">
-                                <li>
-                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Chirurgia ogólna</td>
-                        <td>3500</td>
-                        <td>
-                            <ul class ="list-actions">
-                                <li>
-                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Kardiolog</td>
-                        <td>4500</td>
-                        <td>
-                            <ul class ="list-actions">
-                                <li>
-                                    <a href="specs/edit" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Nefrolog</td>
-                        <td>5000</td>
-                        <td>
-                            <ul class ="list-actions">
-                                <li>
-                                    <a href="specs/specs-edit" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                   
-                    <tr>
-                        <td>Stomatolog</td>
-                        <td>5000</td>
-                        <td>
-                            <ul class ="list-actions">
-                                <li>
-                                    <a href="specs-edit" class="list-actions-button-edit">Edytuj</a>
-                                </li>
-                                <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
+                    <% } %>
                 </tbody>
             </table>
             <p><a href="specs/add" class="button-add">Dodaj nową specjalizację do bazy</a></p>
 
-            <!--zeby edytowac trzeba kliknac wybrana pozycje-->
         </article>
   
         
