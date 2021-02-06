@@ -49,7 +49,7 @@
                           <option value="<%= spec._id %>" label="<%= spec.name %>"></option>
                       <% } %>
                     </select>
-                    <span id="errorSpec" class="errors-text">< /span>
+                    <span id="errorSpec" class="errors-text"></span>
                     <% }else { %>
                       <option value="<%= specVet.spec._id.toString() %>" label="<%= specVet.spec.name %>"
                         <%= (specVet._id && specVet.spec._id.toString() == specVet.spec._id.toString()) ? 'selected' : ''%>></option>

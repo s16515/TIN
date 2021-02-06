@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `tin`.`Vet`
       `firstName` VARCHAR(50) NOT NULL ,
       `lastName` VARCHAR(50) NOT NULL ,
       `email` VARCHAR(50) NOT NULL ,
+      'password' VARCHAR(50) NOT NULL,
       PRIMARY KEY (`_id`),
       UNIQUE INDEX `vet_id_UNIQUE` (`_id` ASC)
     ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
@@ -32,11 +33,11 @@ CREATE TABLE IF NOT EXISTS `tin`.`SpecVet`
 
 
 INSERT IGNORE INTO `tin`.`Vet` (`_id`, `firstName`, `lastName`, `email`) VALUES
-  (1, 'Michał', 'Karta', 'michal.karta@petwet.pl'),
-  (2, 'Adam', 'Wetkowski', 'adam.wetkowski@petwet.pl'),
-  (3, 'Krystian', 'Buczek', 'krystian.buczek@petwet.pl'),
-  (4, 'Magdalena', 'Jasek', 'm.jasek@petwet.pl'),
-  (5, 'Maja', 'Jodła', 'm.jodła@petwet.pl')
+  (1, 'Michał', 'Karta', 'michal.karta@petwet.pl', 'haslo'),
+  (2, 'Adam', 'Wetkowski', 'adam.wetkowski@petwet.pl', 'haslo1'),
+  (3, 'Krystian', 'Buczek', 'krystian.buczek@petwet.pl', 'haslok'),
+  (4, 'Magdalena', 'Jasek', 'm.jasek@petwet.pl', 'haslomj'),
+  (5, 'Maja', 'Jodła', 'm.jodła@petwet.pl', 'haslomaja')
 ;
 
 INSERT IGNORE INTO `tin`.`Spec` (`_id`, `name`, `minSalary`) VALUES

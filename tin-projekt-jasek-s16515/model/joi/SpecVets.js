@@ -13,18 +13,15 @@ const errMessages = (errors) => {
             case "string.max":
                 err.message = `Pole powinno zawierać co najwyżej ${err.local.limit} znaki`;
                 break;
-            case "string.email":
-                err.message = `Pole powinno zawierać prawidłowy adres email`;
-                break;
-             case "password.empty":
+            case "number.empty":
                 err.message = "Pole jest wymagane";
                 break;
-            case "password.min":
+            case "number.min":
                 err.message = `Pole powinno zawierać co najmniej ${err.local.limit} znaki`;
                 break;
-            case "password.max":
+            case "number.max":
                 err.message = `Pole powinno zawierać co najwyżej ${err.local.limit} znaki`;
-                break;  
+                break;
             default:
                 break;
         }
@@ -32,32 +29,23 @@ const errMessages = (errors) => {
     return errors;
 }
 
-const vetSchema = Joi.object({
+const specSchema = Joi.object({
     _id: Joi.number()
         .optional()
         .allow("")
     ,
-    firstName: Joi.string()
+    name: Joi.string()
         .min(2)
         .max(60)
         .required()
         .error(errMessages)
     ,
-    lastName: Joi.string()
-        .min(2)
-        .max(60)
+    minSalary: Joi.number()
+        .min(4)
+        .max(8)
         .required()
         .error(errMessages)
-    ,
-    email: Joi.string()
-        .email()
-        .required()
-        .error(errMessages)
-    ,
-    password: Joi.string()
-        .min(5)
-        .required()
-        .error(errMessages)
+
 });
 
-module.exports = vetSchema;
+module.exports = specSchema;

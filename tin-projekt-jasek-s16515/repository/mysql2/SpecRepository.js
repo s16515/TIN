@@ -1,5 +1,5 @@
 const db = require('../../config/mysql2/db');
-const specSchema = require('../../model/joi/Spec');
+//const specSchema = require('../../model/joi/Spec');
 
 exports.getSpecs = () => {
     return db.promise().query('SELECT * FROM Spec')
@@ -15,7 +15,7 @@ exports.getSpecs = () => {
 
 exports.getSpecById = (specId) => {
     const query = `SELECT s._id as _id, s.name, s.minSalary, sv._id as specvet_id,
-        sv.price, sv.dateFrom, v._id as vet_id, v.firstName, v.lastName, v.email 
+        sv.price, sv.dateFrom, v._id as vet_id, v.firstName, v.lastName, v.email, v.password
     FROM Spec s
     left join SpecVet sv on sv.spec_id = s._id
     left join Vet v on v._id = sv.vet_id 
@@ -44,6 +44,7 @@ return db.promise().query(query, [specId]) //zastepuje tym znak zapytania
                         firstName: row.firstName,
                         lastName: row.lastName,
                         email: row.email,
+                        password: row.password
                     }
                 };
                 spec.specvets.push(specvet);
@@ -58,10 +59,10 @@ return db.promise().query(query, [specId]) //zastepuje tym znak zapytania
 };
 
 exports.createSpec = (newSpecData) => {
-    const sRes = specSchema.validate(newSpecData, { abortEarly: false} );
-    if(sRes.error) {
-        return Promise.reject(sRes.error);
-    }
+  //  const sRes = specSchema.validate(newSpecData, { abortEarly: false} );
+  //  if(sRes.error) {
+  //      return Promise.reject(sRes.error);
+   // }
     const name = newSpecData.name;
     const minSalary = newSpecData.minSalary;
     const sql = 'INSERT into Spec (name, minSalary) VALUES (?, ?)'
@@ -69,10 +70,10 @@ exports.createSpec = (newSpecData) => {
 };
 
 exports.updateSpec = (specID, specData) => {
-    const sRes = specSchema.validate(newSpecData, { abortEarly: false} );
-    if(sRes.error) {
-        return Promise.reject(sRes.error);
-    }
+ //   const sRes = specSchema.validate(specData, { abortEarly: false} );
+  //  if(sRes.error) {
+   //     return Promise.reject(sRes.error);
+   // }
     const name = specData.name;
     const minSalary = specData.minSalary;
     const sql = `UPDATE Spec set name = ?, minSalary = ? where _id = ?`;

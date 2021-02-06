@@ -19,8 +19,7 @@ exports.addSpec = (req, res, next) => {
                 formMode: 'createNew',
                 btnLabel: 'Dodaj specjalizację',
                 formAction: '/specs/add',
-                navLocation: 'specs',
-                validationErrors: err.details
+                navLocation: 'specs'
             });
         });
 };
@@ -43,8 +42,7 @@ exports.updateSpec = (req, res, next) => {
                 pageTitlev2: 'Edycja danych wybranej specjalizacji',
                 btnLabel: 'Aktualizuj dane specjalizacji',
                 formAction: '/specs/edit',
-                navLocation: 'specs',
-                validationErrors: err.details
+                navLocation: 'specs'
             });
         });
     });
@@ -80,8 +78,8 @@ exports.showSpecDetails = (req, res, next) => {
                 pageTitle: 'Szczegóły specjalizacji',
                 pageTitlev2: 'Szczegółowe dane dotyczące wybranej specjalizacji.',
                 formAction: '',
-                navLocation: 'specs',
-                validationErrors: []
+                navLocation: 'specs'
+              
             });
         });
 }
@@ -94,8 +92,7 @@ exports.showAddSpecForm = (req, res, next) => {
         formMode: 'createNew',
         btnLabel: 'Dodaj specjalizację',
         formAction: '/specs/add',
-        navLocation: 'specs',
-        validationErrors: []
+        navLocation: 'specs'
     });
 }
 
@@ -111,8 +108,7 @@ exports.showEditSpecForm = (req, res, next) => {
                 pageTitlev2: 'Edycja danych wybranej specjalizacji',
                 btnLabel: 'Aktualizuj dane specjalizacji',
                 formAction: '/specs/edit',
-                navLocation: 'specs',
-                validationErrors: []
+                navLocation: 'specs'
             });
         });
 };

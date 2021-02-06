@@ -2,10 +2,12 @@ const db = require('../../config/mysql2/db');
 
 exports.getSpecVets = () => {
     const query = `SELECT sv._id as specVet_id, sv.price, sv.dateFrom, s._id as spec_id, s.name,
-    s.minSalary, v._id as vet_id, v.firstName, v.lastName, v.email
+    s.minSalary, v._id as vet_id, v.firstName, v.lastName, v.email, v.password
         FROM SpecVet sv 
         left join Vet v on sv.vet_id = v._id
         left join Spec s on sv.spec_id = s._id`
+
+       
     return db.promise().query(query)
         .then( (results, fields) => {
             const specVets = [];
@@ -24,7 +26,8 @@ exports.getSpecVets = () => {
                         _id: row.vet_id,
                         firstName: row.firstName,
                         lastName: row.lastName,
-                        email: row.email
+                        email: row.email,
+                        password: row.password
                     }
                 };
                 specVets.push(specVet);
@@ -40,7 +43,7 @@ exports.getSpecVets = () => {
 
 exports.getSpecVetById = (SpecVetId) => {
     const query = `SELECT sv._id as specVet_id, sv.price, sv.dateFrom, s._id as spec_id, s.name,
-    s.minSalary, v._id as vet_id, v.firstName, v.lastName, v.email
+    s.minSalary, v._id as vet_id, v.firstName, v.lastName, v.email, v.password
         FROM SpecVet sv 
         left join Vet v on sv.vet_id = v._id
         left join Spec s on sv.spec_id = s._id
@@ -65,7 +68,8 @@ exports.getSpecVetById = (SpecVetId) => {
                     _id: row.vet_id,
                     firstName: row.firstName,
                     lastName: row.lastName,
-                    email: row.email
+                    email: row.email,
+                    password: row.password
                 }
             };
             console.log(specVet);

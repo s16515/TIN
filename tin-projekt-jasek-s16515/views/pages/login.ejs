@@ -11,35 +11,45 @@
 
      <main class="content">
       
-
-            <div class="container">
-                <form>
+      <% if(!loggedUser) { %>
+            <div id="login" class="container">
+              <form method="post" action="/login" novalidate>
                 <div class="row">
                   <div class="left_column">
-                    <label for="fname">Login</label>
+                    <label for="loginEmail">Email</label>
                   </div>
                   <div class="right_column">
-                    <input type="text" id="login" name="login" placeholder="Twój login">
+                    <input type="email" id="loginEmail" name="email" placeholder="Twój login">
                   </div>
                 </div>
                 <div class="row">
                   <div class="left_column">
-                    <label for="lname">Hasło</label>
+                    <label for="loginPassword">Hasło</label>
                   </div>
                   <div class="right_column">
-                    <input type="password" id="haslo" name="haslo" placeholder="Twoje hasło">
+                    <input type="password" id="loginPassword" name="password" placeholder="Twoje hasło">
                   </div>
                 </div>
                 
                 <div class="row">
                   <input type="submit" value="Zaloguj">
-                  <a href="../index" class="button-cancel">Anuluj</a>
+                  <span id="loginErrors"><%= loginError ? loginError : ''%></span>
+                  <a href="/" class="button-cancel">Anuluj</a>
                 </div>
                 
                 
                 </form>
               </div>
 
+            <% } else { %>
+              <div class="container">
+                <article>
+                  <span>Jesteś zalogowany jako: <%=loggedUser.firstName + " " + loggedUser.lastName%></span>
+                  <br/> <br/> <br/> <br/>
+            <a href="/logout" class="button-cancel">Wyloguj się</a>
+          </article>
+              </div>
+            <% } %>
     
   
         

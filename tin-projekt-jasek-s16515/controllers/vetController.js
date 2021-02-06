@@ -8,7 +8,6 @@ const SpecRepository = require('../repository/mysql2/SpecRepository');
 
 exports.addVet = (req, res, next) => {
     const vetData = { ...req.body };
-    console.log(vetData);
     VetRepository.createVet(vetData)
         .then( result => {
             res.redirect('/vets');
@@ -67,6 +66,7 @@ exports.deleteVet = (req, res, next) => {
 
 //funkcje SHOW
 
+
 exports.showVetsList = (req, res, next) => {
     VetRepository.getVets()
         .then(vets => {
@@ -115,7 +115,9 @@ exports.showEditVetForm = (req, res, next) => {
     const vetId = req.params.vetId;
     VetRepository.getVetById(vetId)
         .then(vet => {
+            console.log(vet),
             res.render('pages/vets/vets-form', {
+                
                 vet: vet,
                 formMode: 'edit',
                 pageTitle: 'Edycja weterynarza',

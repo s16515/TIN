@@ -21,6 +21,21 @@ app.use(session({
   resave: false
 }));
 
+//Dane w sesji nie są bezpośrednio dostępne w szablonach strony, zatem napiszemy funkcję, która je udostępni. 
+//W tym celu należy zmodyfikować app.js, rejestrując poniższą funkcję po podłączeniu mechanizmu sesji (ale przed naszymi routerami).
+//res.locals jest zbiorem wszystkich parametrów przekazanych do szablonu. 
+//Mechanizm szablonów EJS wyrzuci błąd, jeśli użyjemy jakiegoś parametru, który nie został uprzednio przekazany. 
+//Ponizsza funkcja zabezpiecza nas przed tym błędem. Oprócz danych sesji, musimy też zabezpieczyć parametr w którym przekazany jest błąd logowania.
+
+app.use((req, res, next) => {
+  const loggedUser = req.session.loggedUser;
+  res.locals.loggedUser = loggedUser;
+  if(!res.locals.loginError) {
+      res.locals.loginError = undefined;
+  }
+  next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -33,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vets', vetRoute);
 app.use('/specs', specRoute);
 app.use('/specVets', specVetRoute);  
+
 
 app.use('/api/vets', vetApiRouter);
 app.use('/api/specs', specApiRouter);
